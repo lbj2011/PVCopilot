@@ -18,6 +18,32 @@ import warnings as _w
 # rdtools 2.1.8 imports pkg_resources; the deprecation notice is noise for users.
 _w.filterwarnings("ignore", message="pkg_resources is deprecated", category=UserWarning)
 
+
+
+def _guard_xgboost():
+    """rdtools imports xgboost at import time, only for a clipping filter PV-Copilot
+    does not use. On macOS the xgboost wheel needs the OpenMP runtime (libomp);
+    without it the import fails and would take PV-Copilot down with it. Put a stub
+    in its place so everything else works."""
+    import sys
+    import types
+    try:
+        import xgboost  # noqa: F401
+    except Exception as e:  # ImportError, or XGBoostError when libomp is missing
+        stub = types.ModuleType("xgboost")
+        reason = f"{type(e).__name__}: {e}"
+
+        class XGBClassifier:                       # noqa: D401
+            def __init__(self, *a, **k):
+                raise ImportError("xgboost is not usable here (" + reason + "). On macOS: "
+                                  "brew install libomp. PV-Copilot itself does not need it.")
+        stub.XGBClassifier = XGBClassifier
+        stub.__pvcopilot_stub__ = True
+        sys.modules["xgboost"] = stub
+
+
+_guard_xgboost()
+
 from .config import configure, get_config, set_ai
 from .examples import EXAMPLE_MAPPINGS, export_example, list_examples, load_example
 from .pipeline import Result, analyze, identify_columns, read_data

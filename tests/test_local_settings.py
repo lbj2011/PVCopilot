@@ -93,3 +93,17 @@ def test_ai_switch_blocks_every_llm_call(clean_env):
         assert llm.is_configured()
     finally:
         config.set_ai(True)
+
+
+def test_works_without_a_usable_xgboost():
+    """macOS without libomp: importing xgboost fails; PV-Copilot must still run."""
+    import subprocess
+    import sys
+    code = ("import sys; sys.modules['xgboost'] = None\n"      # makes 'import xgboost' fail
+            "import pvcopilot\n"
+            "r = pvcopilot.analyze('pvdaq4', pvcopilot.EXAMPLE_MAPPINGS['pvdaq4'])\n"
+            "assert r.rate is not None and sys.modules['xgboost'].__pvcopilot_stub__\n"
+            "print('ok', r.rate)")
+    out = subprocess.run([sys.executable, "-c", code], capture_output=True, text=True,
+                         timeout=300)
+    assert out.returncode == 0, out.stderr[-2000:]
