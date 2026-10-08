@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: "If you use PV-Copilot, please cite it as below."
+title: "PV-Copilot: LLM-assisted end-to-end PV degradation analysis"
+type: software
+authors:
+  - family-names: Li
+    given-names: Baojie
+    affiliation: Lawrence Berkeley National Laboratory
+  - family-names: Jain
+    given-names: Anubhav
+    affiliation: Lawrence Berkeley National Laboratory
+version: 0.1.0
+license: BSD-2-Clause
+repository-code: "https://github.com/lbj2011/PVCopilot"
+url: "https://pvtools.lbl.gov/pv-copilot"
+keywords: [photovoltaics, degradation, performance loss rate, rdtools, pvlib, LLM]
+preferred-citation:
+  type: conference-paper
+  title: "PV Copilot: A Large Language Model–Enabled Tool for End-to-End PV Degradation Analysis"
+  authors:
+    - family-names: Li
+      given-names: Baojie
+    - family-names: Jain
+      given-names: Anubhav
+  conference:
+    name: "IEEE Photovoltaic Specialists Conference (PVSC)"
+  year: 2026

@@ -1,0 +1,335 @@
+/* =========================
+   Degradation Analysis — metric radio labels
+   Prevent Bootstrap link-color bleed on hover/focus
+   ========================= */
+#metric-selected-visible .form-check-label,
+#metric-selected-visible .form-check-label:hover,
+#metric-selected-visible .form-check-label:focus,
+#metric-selected-visible .form-check-label:active,
+#metric-selected-visible .form-check-input:checked ~ .form-check-label,
+#metric-selected-visible .form-check-label * {
+    color: inherit !important;
+    text-decoration: none !important;
+}
+
+/* Page title */
+.page-title {
+    font-weight: 800;
+    font-size: 40px;
+}
+
+.page-title-container {
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    display: flex;
+    justify-content: center;   /* horizontal center */
+    align-items: center;       /* vertical center (optional) */
+    text-align: center;        /* ensures text stays centered */
+}
+
+.level-1-title {
+    font-weight: 600;
+    font-size: 30px;   /* adjust size as needed */
+    margin-bottom: 12px;
+}
+
+.level-2-title {
+    font-weight: 600;
+    font-size: 24px;   /* adjust as needed */
+    margin-bottom: 10px;
+}
+
+.custom-alert {
+    background-color: #e4f0fa !important;
+    border: 1px solid #82b9ea !important;  /* add border + color */
+    color: #0a539c !important;
+    border-radius: 8px !important;
+}
+
+
+
+
+
+
+/* ABOUT TEXT */
+.about-text a {
+    color: inherit; 
+    text-decoration: none; 
+    font-weight: bold;
+    transition: color 0.2s ease;
+}
+
+.about-text a:hover {
+    color: #92D050; 
+}
+
+
+/* =========================
+   Tool Cards
+   ========================= */
+
+.tool-card {
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.tool-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.15);
+}
+
+/* Image wrapper — clips the zoom effect */
+.tool-card-img-wrap {
+    overflow: hidden;
+    height: 180px;
+    background-color: #f8f9fa;
+}
+
+.tool-card-img {
+    width: 100%;
+    height: 180px;
+    object-fit: contain;
+    padding: 15px;
+    transition: transform 0.35s ease;
+    display: block;
+}
+
+.tool-card:hover .tool-card-img {
+    transform: scale(1.06);
+}
+
+/* Body — keep original compact layout */
+.tool-card-body {
+    display: flex;
+    flex-direction: column;
+    height: 50%;
+}
+
+/* Title */
+.tool-card-title {
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+/* Description */
+.tool-card-desc {
+    min-height: 60px;
+    font-size: 14px;
+    color: #7a7a7a;
+    margin-bottom: 0;
+}
+
+/* Button */
+.tool-card-btn {
+    margin-top: auto;
+    font-weight: 700;
+    width: auto;
+    align-self: flex-start;
+    padding: 6px 16px;
+    transition: background-color 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease;
+}
+
+.tool-card-btn:hover {
+    background-color: #7ab53e !important;
+    border-color: #7ab53e !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(114,180,50,0.35);
+}
+
+.tool-card-btn:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+
+/* =========================
+   PV Pathway Detail Panel
+   ========================= */
+
+/* Desktop */
+@media (min-width: 768px) {
+  .pv-pathway-detail-panel {
+    height: 450px;
+    min-height: 450px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .pv-pathway-detail-panel {
+    height: auto;
+    min-height: unset;
+    overflow-y: visible;
+  }
+}
+
+/* Graph loading blur effect */
+.dash-loading .dash-graph {
+    filter: blur(4px);
+    opacity: 0.6;
+    transition: all 0.3s ease;
+}
+
+/* layout slide in  */
+.slide-in-up {
+    animation: slideInUp 0.5s ease-out;
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================
+   Wiki Source Chips
+   ========================= */
+
+.wiki-source-chip:hover {
+    background: #e5e7eb !important;
+    color: #111827 !important;
+}
+
+/* =========================
+   Wiki Connection Chips
+   ========================= */
+
+.wiki-conn-chip {
+    transition: background 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.wiki-conn-chip:hover {
+    background: var(--chip-hover-bg, #f3f4f6) !important;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.12) !important;
+    transform: translateY(-1px);
+}
+
+.wiki-conn-chip:active {
+    transform: translateY(0px);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1) !important;
+}
+.slide-in-top {
+    animation: slideInTop 0.4s ease-out;
+    animation-delay: 0.05s;
+    animation-fill-mode: both;
+}
+
+@keyframes slideInTop {
+    from {
+        opacity: 0;
+        transform: translateY(-15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* =========================
+   Pathway Modal backdrop blur
+   ========================= */
+
+.modal-backdrop {
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    background-color: rgba(0, 0, 0, 0.4) !important;
+    opacity: 1 !important;
+}
+
+/* Modal detail panel: fixed height on wide, auto on narrow */
+#pathway-modal .pv-pathway-detail-panel {
+    height: 420px !important;
+    min-height: unset !important;
+}
+
+@media (max-width: 767px) {
+    #pathway-modal .pv-pathway-detail-panel {
+        height: auto !important;
+        max-height: 300px;
+    }
+}
+
+/* =========================
+   Pathway Modal — responsive graph/detail layout
+   ========================= */
+
+/* Row container: side-by-side, both children stretch to same height */
+.modal-graph-detail-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: stretch;   /* children fill row height */
+}
+
+/* Graph box: fixed height drives the row height */
+.modal-graph-box {
+    position: relative;
+    flex: 2 1 400px;
+    height: 400px;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    background: #fafafa;
+    min-width: 0;
+    overflow: hidden;
+}
+
+/* Detail panel: stretch to match graph height via align-items:stretch */
+.modal-detail-panel {
+    flex: 1 1 260px;
+    height: auto;           /* let stretch do the work on wide screens */
+    min-height: 0 !important;
+    min-width: 0;
+    overflow-y: auto;
+}
+
+/* Mid screens: shrink graph, detail follows via stretch */
+@media (max-width: 900px) {
+    .modal-graph-box {
+        height: 300px;
+    }
+}
+
+/* Narrow screens: stack vertically — detail becomes small fixed box */
+@media (max-width: 620px) {
+    .modal-graph-box {
+        flex: 1 1 100%;
+        height: 260px;
+    }
+    .modal-detail-panel {
+        flex: 1 1 100%;
+        height: 200px !important;
+        overflow-y: auto;
+    }
+}
+
+/* Override the generic pv-pathway-detail-panel class inside modal */
+#pathway-modal .pv-pathway-detail-panel {
+    min-height: unset !important;
+    height: auto !important;
+}
+@media (max-width: 620px) {
+    #pathway-modal .pv-pathway-detail-panel {
+        height: 200px !important;
+    }
+}
+
+/* =========================
+   View Degradation Pathway button
+   ========================= */
+
+.view-pathway-btn:hover {
+    background: #374151 !important;
+    transform: translateY(-1px);
+}
+
+.view-pathway-btn:active {
+    background: #111827 !important;
+    transform: translateY(0);
+}
